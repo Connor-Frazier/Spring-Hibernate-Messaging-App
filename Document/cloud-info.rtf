@@ -1,0 +1,71 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2512
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 AndaleMono;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue233;\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c93333;\cssrgb\c0\c0\c93333;}
+\margl1440\margr1440\vieww17280\viewh10780\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 AWS cloud info:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 front end url: {\field{\*\fldinst{HYPERLINK "http://com.northeastern.cs5500.team1.s3-website.us-east-2.amazonaws.com/"}}{\fldrslt 
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 http://com.northeastern.cs5500.team1.s3-website.us-east-2.amazonaws.com/}}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 database endpoint: 
+\f2\fs26 jdbc:mysql://fse-team-1-database.cqqtwlsgjh07.us-east-2.rds.amazonaws.com:3306/PRATTLE?serverTimezone=UTC\
+\
+database username: admin\
+database password: neucs5500
+\f0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Backend Server:\
+\
+pem file = team1.pem\
+\
+run chmod 400 on team1.pem\
+\
+server ip address = 
+\f3 ec2-13-58-44-156.us-east-2.compute.amazonaws.com
+\f0 \
+\
+user = 
+\f3 ec2-user\
+
+\f0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 rest endpoint host: {\field{\*\fldinst{HYPERLINK "http://ec2-13-58-44-156.us-east-2.compute.amazonaws.com:8080/prattle/"}}{\fldrslt 
+\f1 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 http://ec2-13-58-44-156.us-east-2.compute.amazonaws.com:8080/prattle/}}
+\f1 \cf3 \expnd0\expndtw0\kerning0
+\ul \ulc3 \outl0\strokewidth0 \strokec3 \
+\
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone \outl0\strokewidth0 web socket endpoint host: {\field{\*\fldinst{HYPERLINK "http://ec2-13-58-44-156.us-east-2.compute.amazonaws.com:8080/prattle/"}}{\fldrslt 
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 http://ec2-13-58-44-156.us-east-2.compute.amazonaws.com:8080/prattle/}}
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 chat/\{name\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \ulnone \
+\
+examples:\
+\
+login to server:\
+\
+
+\f3  ssh -i "team1.pem" ec2-user@ec2-13-58-44-156.us-east-2.compute.amazonaws.com\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 copy war file to server:
+\f3 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+scp -i "team1.pem" team-1-su20/Development/target/prattle.war ec2-user@ec2-13-58-44-156.us-east-2.compute.amazonaws.com:/usr/share/tomcat/webapps}
