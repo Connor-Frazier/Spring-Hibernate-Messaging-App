@@ -10,6 +10,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.UUID;
 
+/**
+ * Utility class to act as an adapter for writing to and reading from a file system.
+ */
 public class FileHandler {
   private static Logger logger = LoggerFactory.getLogger(FileHandler.class);
 
