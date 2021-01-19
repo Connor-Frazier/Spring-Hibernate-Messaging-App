@@ -188,6 +188,10 @@ public class ChatEndpoint {
     }
   }
 
+  /**
+   * A helper method to decipher what type of message is being sent and choose the appropriate helper method.
+   * @param message the message to be sent over the websocket.
+   */
   private void sendMessageByType(Message message) {
     if (message.getIsBroadcastMessage()) {
       broadcast(message);
@@ -208,6 +212,11 @@ public class ChatEndpoint {
     }
   }
 
+  /**
+   * A helper method to send a message to all of the users in a group.
+   * @param groupName the name of the group the message is being sent to.
+   * @param message the message to be sent.
+   */
   private void sendToGroup(String groupName, Message message) {
     Optional<Group> testGroup = groupService.findGroupByName(groupName);
     Group targetGroup;
@@ -238,6 +247,12 @@ public class ChatEndpoint {
     logger.info("Could not find group");
   }
 
+  /**
+   * Helper method to determine if a message contains content that receving user has created a filter for.
+   * @param message the message that has been sent.
+   * @param member the receiving user.
+   * @return True if the message content has matched a filter, otherwise false.
+   */
   private boolean getFilterMatch(Message message, User member) {
     boolean filterMatched = false;
     for (Filter filter : member.getFilters()) {
@@ -265,10 +280,19 @@ public class ChatEndpoint {
     logger.info("Message successfully broadcasted to all users");
   }
 
+  /**
+   * Helper method to send a user's sent message to the user so that the conversation flow is continuous.
+   * @param message the message to be echoed.
+   */
   private void echo(Message message) {
     executeSend(message, this);
   }
 
+  /**
+   * Send a message to a user.
+   * @param target the user to send the message to.
+   * @param message the message that is being sent.
+   */
   private void sendToTarget(User target, Message message) {
 
     //write at source
@@ -283,6 +307,11 @@ public class ChatEndpoint {
     }
   }
 
+  /**
+   * Helper message to send a message to an open client websocket.
+   * @param message the message to be sent.
+   * @param endpoint the client websocket connection.
+   */
   private void executeSend(Message message, ChatEndpoint endpoint) {
     try {
       endpoint.session.getBasicRemote().sendObject(message);
@@ -322,6 +351,11 @@ public class ChatEndpoint {
     // Do error handling here
   }
 
+  /**
+   * Helper method to find the session that belongs to a user.
+   * @param user the user to find the session for.
+   * @return the session id for the for the user's session.
+   */
   private String getSessionIdByUser(User user) {
     String name = user.getUsername();
     for (Entry<String, String> entry : users.entrySet()) {
@@ -334,11 +368,23 @@ public class ChatEndpoint {
     return "";
   }
 
+  /**
+   * Helper method that gets the messages that have not been delivered to a user yet.
+   * @param user the user to get the messages for.
+   * @return the associated list of messages.
+   * @throws UserDoesNotExistException when the user does not exist in the system.
+   */
   private List<Message> getStashedMessages(User user) throws UserDoesNotExistException {
     return messageService.getUnsentMessages(user.getUsername(), true);
   }
 
 
+  /**
+   * Helper methods to create hashtag entities if the message contains hashtags.
+   * @param content the content of the message.
+   * @param message the message.
+   * @return the set of hashtags included in the message.
+   */
   private Set<HashTag> createHashTags(String content, Message message) {
     Set<HashTag> result = new HashSet<>();
     Pattern hashtagPattern = Pattern.compile("#(\\w+)");
