@@ -12,8 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Repository interface associated with the HashTag table to support basic CRUD operations on the
- * HashTag table.
+ * Repository interface for the hashtag database table.
  */
 @Repository
 public interface HashTagRepository extends CrudRepository<HashTag, Integer> {
@@ -35,5 +34,9 @@ public interface HashTagRepository extends CrudRepository<HashTag, Integer> {
   @Query("Select h.messages from HashTag h where h.hashtagString = :hashtagString")
   List<Message> findMessagesByHashtagString(@Param("hashtagString") String hashTagString);
 
+  /**
+   * Find the top five hashtags in descending order.
+   * @return the list of hashtags.
+   */
   List<HashTag> findTop5ByOrderBySearchHitsDesc();
 }

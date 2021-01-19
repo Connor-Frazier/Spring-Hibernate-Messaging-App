@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 /**
- * Repository interface associated with the User table to support basic CRUD operations on the User
- * table.
+ * Repository interface for the user database table.
  */
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
