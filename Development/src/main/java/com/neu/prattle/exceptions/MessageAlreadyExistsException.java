@@ -5,11 +5,6 @@ package com.neu.prattle.exceptions;
  */
 public class MessageAlreadyExistsException extends RuntimeException {
 
-  /**
-   * Message already exists exception constructor.
-   *
-   * @param message takes a string message.
-   */
   public MessageAlreadyExistsException(String message) {
     super(message);
   }

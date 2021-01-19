@@ -5,12 +5,7 @@ package com.neu.prattle.exceptions;
  * or does not exist.
  */
 public class MessageDoesNotExistException extends RuntimeException {
-
-  /**
-   * Message does not exist exception constructor.
-   *
-   * @param message takes a string message.
-   */
+  
   public MessageDoesNotExistException(String message) {
     super(message);
   }

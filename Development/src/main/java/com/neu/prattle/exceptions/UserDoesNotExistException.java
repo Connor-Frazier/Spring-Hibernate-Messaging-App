@@ -6,11 +6,6 @@ package com.neu.prattle.exceptions;
  */
 public class UserDoesNotExistException extends Exception {
 
-  /**
-   * User defined exception.
-   *
-   * @param message takes a string message
-   */
   public UserDoesNotExistException(String message) {
     super(message);
   }

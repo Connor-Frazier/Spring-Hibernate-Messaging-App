@@ -6,11 +6,6 @@ package com.neu.prattle.exceptions;
  */
 public class ConversationNotFoundException extends RuntimeException {
 
-  /**
-   * Conversation not found exception constructor.
-   *
-   * @param message takes a string message.
-   */
   public ConversationNotFoundException(String message) {
     super(message);
   }
