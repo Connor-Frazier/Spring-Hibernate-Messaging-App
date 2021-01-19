@@ -1,5 +1,8 @@
 package com.neu.prattle.dto;
 
+/**
+ * A public class to work as a data transfer object for the Government POJO object.
+ */
 public class GovernmentDTO {
 
   private String govUsername;

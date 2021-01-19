@@ -1,5 +1,8 @@
 package com.neu.prattle.dto;
 
+/**
+ * A public class to work as a data transfer object for a SubGroup(Group) POJO object.
+ */
 public class SubGroupDTO {
 
   private int parentId;

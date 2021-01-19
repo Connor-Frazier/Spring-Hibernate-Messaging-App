@@ -4,6 +4,9 @@ import com.neu.prattle.model.MessageStatus;
 
 import java.util.Calendar;
 
+/**
+ * A public class to work as a data transfer object for the Message POJO object.
+ */
 public class MessageDTO {
   private String content;
 
