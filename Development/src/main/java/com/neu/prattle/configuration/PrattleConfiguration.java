@@ -10,6 +10,9 @@ import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
+/**
+ * Configure endpoint routing addresses.
+ */
 @Repository
 public class PrattleConfiguration implements WebSocketConfigurer {
   @Bean
