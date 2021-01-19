@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+/**
+ * A POJO for representing a message content filter.
+ */
 @Entity
 @Table(name = "filters")
 public class Filter {
@@ -29,9 +32,10 @@ public class Filter {
   @JsonBackReference
   private Set<User> users;
 
-  public Filter() {
-    //default constructor for jpa
-  }
+  /**
+   * Default constructor.
+   */
+  public Filter() {}
 
   public int getFilterID() {
     return filterID;

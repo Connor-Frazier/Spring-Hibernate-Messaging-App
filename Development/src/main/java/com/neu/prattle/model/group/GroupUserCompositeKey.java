@@ -6,6 +6,9 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+/**
+ * A composite key representing a group and user relationship.
+ */
 @Embeddable
 public class GroupUserCompositeKey implements Serializable {
 

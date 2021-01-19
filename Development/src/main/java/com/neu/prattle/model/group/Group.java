@@ -27,6 +27,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
+ * A POJO for a group of users.
  * @author Neel Deshpande
  */
 @Entity
@@ -73,7 +74,7 @@ public class Group {
   private List<Group> subGroups;
 
   /**
-   * Public no-arg constructor required by JPA
+   * Default constructor.
    */
   public Group() {
     super();
@@ -103,29 +104,14 @@ public class Group {
     this.parentGroups = new ArrayList<>();
   }
 
-  /**
-   * Simple getter for Group ID
-   *
-   * @return the group ID
-   */
   public int getGroupID() {
     return groupID;
   }
 
-  /**
-   * Simple getter for the password
-   *
-   * @return the password
-   */
   public String getPassword() {
     return password;
   }
 
-  /**
-   * Simple setter for the password
-   *
-   * @param password the password
-   */
   public void setPassword(String password) {
     validateString(password);
     if (password.length() < 8) {
@@ -134,77 +120,37 @@ public class Group {
     this.password = password;
   }
 
-  /**
-   * Simple getter for the group name
-   *
-   * @return the group name
-   */
   public String getGroupName() {
     return groupName;
   }
 
-  /**
-   * Simple setter for the group name
-   *
-   * @param name the group name
-   */
   public void setGroupName(String name) {
     validateString(name);
     this.groupName = name;
   }
 
-  /**
-   * Simple getter for the group email
-   *
-   * @return the group email
-   */
   public String getGroupEmail() {
     return groupEmail;
   }
 
-  /**
-   * Simple setter for the group email
-   *
-   * @param groupEmail the group email
-   */
   public void setGroupEmail(String groupEmail) {
     validateString(groupEmail);
     this.groupEmail = groupEmail;
   }
 
-  /**
-   * Simple getter for the group description
-   *
-   * @return the group description
-   */
   public String getDescription() {
     return description;
   }
 
-  /**
-   * Simple setter for the group description
-   *
-   * @param description the group description
-   */
   public void setDescription(String description) {
     validateString(description);
     this.description = description;
   }
 
-  /**
-   * Simple getter for the members
-   *
-   * @return the list of members
-   */
   public List<GroupUserMapper> getMappings() {
     return mappings;
   }
 
-  /**
-   * Simple setter for the list of members
-   *
-   * @param mappings the list of members
-   */
   public void setMappings(List<GroupUserMapper> mappings) {
     this.mappings = mappings;
   }
@@ -255,6 +201,9 @@ public class Group {
     }
   }
 
+  /**
+   * A builder helper class to create instances of {@link Group}
+   */
   public static class GroupBuilder {
 
     private String name;
@@ -271,66 +220,31 @@ public class Group {
       mappings = new ArrayList<>();
     }
 
-    /**
-     * Set the name
-     *
-     * @param groupName the name of the group
-     * @return the builder with the name set
-     */
     public GroupBuilder name(String groupName) {
       this.name = groupName;
       return this;
     }
 
-    /**
-     * Set the password
-     *
-     * @param password the password for the group
-     * @return the builder with the password set
-     */
     public GroupBuilder password(String password) {
       this.password = password;
       return this;
     }
 
-    /**
-     * Set the members
-     *
-     * @param members the list of group members
-     * @return the builder with the member list set
-     */
     public GroupBuilder users(List<GroupUserMapper> members) {
       this.mappings = members;
       return this;
     }
 
-    /**
-     * Set the email of the group
-     *
-     * @param email the email
-     * @return the builder with the email set
-     */
     public GroupBuilder email(String email) {
       this.email = email;
       return this;
     }
 
-    /**
-     * Set the description
-     *
-     * @param description the description of the group
-     * @return the builder with the description set
-     */
     public GroupBuilder description(String description) {
       this.description = description;
       return this;
     }
 
-    /**
-     * Build the Group instance and return it
-     *
-     * @return the built Group
-     */
     public Group build() {
       return new Group(this);
     }

@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Maps to the government entity in the prattle db.
+ *  A government entity POJO representing a government user.
  */
 @Entity
 @Table(name = "government")
@@ -41,7 +41,7 @@ public class Government {
    * Default constructor.
    */
   public Government() {
-    // for jpa
+
   }
 
   public int getGovernmentID() {

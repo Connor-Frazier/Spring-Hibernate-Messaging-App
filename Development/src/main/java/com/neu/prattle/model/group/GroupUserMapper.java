@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+/**
+ * A POJO for the group user mapping.
+ */
 @Entity
 @Table(name = "group_user_mapping")
 public class GroupUserMapper {
@@ -42,9 +45,21 @@ public class GroupUserMapper {
   @Column(name = "isMember")
   private boolean isMember;
 
+  /**
+   * Default constructor.
+   */
   public GroupUserMapper() {
   }
 
+  /**
+   * Constructor for creating a mapping with a group and user entity.
+   * @param group the group in the mapping.
+   * @param user the user in the mapping.
+   * @param key the key that relates the two in the database.
+   * @param isModerator is the user a moderator.
+   * @param isFollower is the user a follower of the group.
+   * @param isMember is the user a member of the group.
+   */
   public GroupUserMapper(Group group, User user, GroupUserCompositeKey key, boolean isModerator,
                          boolean isFollower,
                          boolean isMember) {
@@ -56,6 +71,13 @@ public class GroupUserMapper {
     this.isMember = isMember;
   }
 
+  /**
+   * Constructor for creating a mapping with only the relation key.
+   * @param key the key that relates the two in the database.
+   * @param isModerator is the user a moderator.
+   * @param isFollower is the user a follower of the group.
+   * @param isMember is the user a member of the group.
+   */
   public GroupUserMapper(GroupUserCompositeKey key, boolean isModerator, boolean isFollower,
                          boolean isMember) {
     this.id = key;

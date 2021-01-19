@@ -33,7 +33,6 @@ public class UserIPMapper {
    * Default constructor.
    */
   public UserIPMapper() {
-    // default constructor for jpa
   }
 
   /**
@@ -47,56 +46,26 @@ public class UserIPMapper {
     setIpAddress(ipAddress);
   }
 
-  /**
-   * Returns the user id.
-   *
-   * @return user id
-   */
   public int getUserID() {
     return userID;
   }
 
-  /**
-   * Sets the user id.
-   *
-   * @param userID id to be set
-   */
   public void setUserID(int userID) {
     this.userID = userID;
   }
 
-  /**
-   * Gets the user object.
-   *
-   * @return user
-   */
   public User getUser() {
     return user;
   }
 
-  /**
-   * Sets the user object.
-   *
-   * @param user user to be set
-   */
   public void setUser(User user) {
     this.user = user;
   }
 
-  /**
-   * Returns the ip address.
-   *
-   * @return ip address
-   */
   public String getIpAddress() {
     return ipAddress;
   }
 
-  /**
-   * Sets the ip address.
-   *
-   * @param ipAddress ip address of the user
-   */
   public void setIpAddress(String ipAddress) {
     if (!validateIPAddress(ipAddress)) {
       throw new IllegalArgumentException("Malformed IP address");

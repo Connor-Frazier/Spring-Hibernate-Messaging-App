@@ -42,36 +42,28 @@ public class Message {
   @Column(name = "msg_id")
   private int messageId;
 
-  // The first message in the thread that this message is related to
   @Column(name = "source_msg_id")
   private int sourceMessageId;
 
-  // The content of the message
   @Column(name = "content")
   private String content;
 
-  // The id of the of sending user
   @Column(name = "from_user_id")
   private int fromUserId;
 
-  // The id of the receiving user
   @Column(name = "to_user_id")
   private int toUserId;
 
-  // The status of the message
   @Enumerated(EnumType.STRING)
   @Column(name = "message_status")
   private MessageStatus messageStatus;
 
-  // The subject of the message
   @Column(name = "msg_subject")
   private String messageSubject;
 
-  // Boolean flag that represents whether the message has a media attachment or not
   @Column(name = "hasAttachment")
   private boolean hasAttachment;
 
-  // The date/time the message was created.
   @Column(name = "generation_time")
   private Timestamp generatedTime;
 
@@ -320,7 +312,7 @@ public class Message {
   }
 
   /**
-   * A builder to build the message pattern.
+   * Return a builder object for a message.
    *
    * @return a message builder object
    */
@@ -328,13 +320,11 @@ public class Message {
     return new MessageBuilder();
   }
 
-  /***
+  /**
    * A Builder helper class to create instances of {@link Message}
    */
   public static class MessageBuilder {
-    /***
-     * Invoking the build method will return this message object.
-     */
+
     Message message;
 
     MessageBuilder() {

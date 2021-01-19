@@ -33,7 +33,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /***
- * A User object represents a basic account information for a user.
+ * A User POJO object represents a basic account information for a user.
  */
 @Entity
 @Table(name = "user")
@@ -136,20 +136,11 @@ public class User {
     setFilters(new HashSet<>());
   }
 
-  /**
-   * Return username.
-   *
-   * @return a string name
-   */
   public String getUsername() {
     return username;
   }
 
-  /**
-   * Sets the username.
-   *
-   * @param username takes the argument
-   */
+
   public void setUsername(String username) {
     if (username == null) {
       throw new NullPointerException("The user's name cannot be null");
@@ -159,20 +150,10 @@ public class User {
     this.username = username;
   }
 
-  /**
-   * fetches password.
-   *
-   * @return a string password
-   */
   public String getPassword() {
     return password;
   }
 
-  /**
-   * Sets the password.
-   *
-   * @param password password to be set
-   */
   public void setPassword(String password) {
     if (password == null) {
       throw new NullPointerException("The user's password cannot be null");
@@ -184,151 +165,70 @@ public class User {
     this.password = password;
   }
 
-  /**
-   * Returns the id of the user.
-   *
-   * @return user id
-   */
+
   public int getUserID() {
     return userID;
   }
 
-  /**
-   * Sets the id of the user, utilized by JPA.
-   *
-   * @param userID id to be set
-   */
   public void setUserID(int userID) {
     this.userID = userID;
   }
 
-  /**
-   * Return the user's first name.
-   *
-   * @return first name
-   */
   public String getFirstName() {
     return firstName;
   }
 
-  /**
-   * Sets the user's first name.
-   *
-   * @param firstName first name to be set to
-   */
   public void setFirstName(String firstName) {
     this.firstName = firstName;
   }
 
-  /**
-   * Return the user's last name.
-   *
-   * @return last name
-   */
   public String getLastName() {
     return lastName;
   }
 
-  /**
-   * Sets the user's last name.
-   *
-   * @param lastName last name to be set to
-   */
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
 
-  /**
-   * Returns contact number of the user.
-   *
-   * @return contact number
-   */
   public String getContactNumber() {
     return contactNumber;
   }
 
-  /**
-   * Sets the contact number of the user.
-   *
-   * @param contactNumber contact number to be set to
-   */
   public void setContactNumber(String contactNumber) {
     this.contactNumber = contactNumber;
   }
 
-
-  /**
-   * Returns the timezone that has been set.
-   *
-   * @return timezone of the user
-   */
   public TimeZone getTimezone() {
     return timezone;
   }
 
-  /**
-   * Sets the user's timezone.
-   *
-   * @param timezone timezone to be set for the user
-   */
   public void setTimezone(TimeZone timezone) {
     this.timezone = timezone;
   }
 
-  /**
-   * Returns the IP mapping.
-   *
-   * @return IP mapping
-   */
   public UserIPMapper getUserIPMapper() {
     return userIPMapper;
   }
 
-  /**
-   * Sets the ip mapping for this user.
-   *
-   * @param userIPMapper mapping to be set
-   */
   public void setUserIPMapper(UserIPMapper userIPMapper) {
     this.userIPMapper = userIPMapper;
   }
 
-  /**
-   * Returns a set of followers.
-   *
-   * @return set of followers
-   */
   public Set<User> getFollowers() {
     return followers;
   }
 
-  /**
-   * Assigns a set of followers.
-   *
-   * @param followers followers to be assigned
-   */
   public void setFollowers(Set<User> followers) {
     this.followers = followers;
   }
 
-  /**
-   * Returns a set of followees.
-   *
-   * @return set of followees
-   */
   public Set<User> getFollowees() {
     return followees;
   }
 
-  /**
-   * Assigns a set of followees.
-   *
-   * @param followees set of followees
-   */
   public void setFollowees(Set<User> followees) {
     this.followees = followees;
   }
-
 
   public Timestamp getLogOutTimestamp() {
     return logOutTimestamp;
@@ -378,14 +278,6 @@ public class User {
     this.profilePicturePath = profilePicturePath;
   }
 
-  /***
-   * Makes comparison between two user accounts.
-   *
-   * Two user objects are equal if their name are equal ( names are case-sensitive )
-   *
-   * @param obj Object to compare
-   * @return a predicate value for the comparison.
-   */
   @Override
   public boolean equals(Object obj) {
     if (!(obj instanceof User))
@@ -395,16 +287,6 @@ public class User {
     return user.username.equals(this.username);
   }
 
-  /***
-   * Returns the hashCode of this object.
-   *
-   * As name can be treated as a sort of identifier for
-   * this instance, we can use the hashCode of "name"
-   * for the complete object.
-   *
-   *
-   * @return hashCode of "this"
-   */
   @Override
   public int hashCode() {
     return Objects.hash(username);
@@ -448,67 +330,31 @@ public class User {
       profilePicture = null;
     }
 
-    /**
-     * Returns builder after setting username.
-     *
-     * @param userName user name to be set
-     * @return resultant builder
-     */
     public UserBuilder username(String userName) {
       this.userName = userName;
       return this;
     }
 
-    /**
-     * Returns builder after setting password.
-     *
-     * @param password password to be set
-     * @return resultant builder
-     */
     public UserBuilder password(String password) {
       this.password = password;
       return this;
     }
 
-    /**
-     * Returns builder after setting first name.
-     *
-     * @param firstName first name to be set
-     * @return resultant builder
-     */
     public UserBuilder firstName(String firstName) {
       this.firstName = firstName;
       return this;
     }
 
-    /**
-     * Returns builder after setting last name.
-     *
-     * @param lastName user name to be set
-     * @return resultant builder
-     */
     public UserBuilder lastName(String lastName) {
       this.lastName = lastName;
       return this;
     }
 
-    /**
-     * Returns builder after setting contact number.
-     *
-     * @param contactNumber contact number to be set
-     * @return resultant builder
-     */
     public UserBuilder contactNumber(String contactNumber) {
       this.contactNumber = contactNumber;
       return this;
     }
 
-    /**
-     * Returns the builder after setting the timezone.
-     *
-     * @param timezone timezone to be set
-     * @return resultant builder
-     */
     public UserBuilder timezone(String timezone) {
       if (timezone == null) {
         timezone = "UTC";
@@ -522,11 +368,6 @@ public class User {
       return this;
     }
 
-    /**
-     * Builds the User object.
-     *
-     * @return resultant user object
-     */
     public User build() {
       return new User(this);
     }

@@ -18,6 +18,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
+/**
+ * A filter object responsible for the JWT authorization process.
+ */
 public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
   private static final String HEADER = "Authorization";

@@ -99,10 +99,17 @@ public class HashTag {
             '}';
   }
 
+  /**
+   * Return a builder object for a Hashtag.
+   * @return a hashtag builder object.
+   */
   public static HashTagBuilder hashTagBuilder() {
     return new HashTagBuilder();
   }
 
+  /**
+   * A builder class to create instances of {@link HashTag}
+   */
   public static class HashTagBuilder {
 
     HashTag hashTag;

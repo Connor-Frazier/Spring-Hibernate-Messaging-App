@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * A Message Attachment POJO that represents a media attachment for a message.
+ */
 @Entity
 @Table(name = "msg_attachment_map")
 public class MessageAttachment {
@@ -30,8 +33,11 @@ public class MessageAttachment {
   @Column(name = "web_url")
   private String webUrl;
 
+  /**
+   * Default constructor.
+   */
   public MessageAttachment() {
-    // default constructor for jpa
+
   }
 
   public int getFileID() {

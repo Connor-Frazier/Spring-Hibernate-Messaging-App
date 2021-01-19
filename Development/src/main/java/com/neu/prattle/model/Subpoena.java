@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * A POJO for a subpoena issued by a government user on a user.
+ */
 @Entity
 @Table(name = "subpoena")
 public class Subpoena {
@@ -35,8 +38,11 @@ public class Subpoena {
   @Column(name = "expire_timestamp")
   private Timestamp expireTimestamp;
 
+  /**
+   * Default constructor.
+   */
   public Subpoena() {
-    // default constructor for jpa
+
   }
 
   public int getSubpoenaID() {

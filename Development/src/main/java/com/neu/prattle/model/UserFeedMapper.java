@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * Represents the mapping between the users and their feeds.
+ * A POJO tat represents the mapping between the users and their feeds.
  */
 @Entity
 @Table(name = "user_feed_mapping")
@@ -36,10 +36,19 @@ public class UserFeedMapper {
   @Column(name = "feed_time")
   private Timestamp feedTime;
 
+  /**
+   * Default constructor.
+   */
   public UserFeedMapper() {
-    // A default empty constructor
+
   }
 
+  /**
+   * Constructor with attributes.
+   * @param user the user that will recieve the feeds.
+   * @param feedText the text from this feed to show.
+   * @param timestamp the timestamp of the feed.
+   */
   public UserFeedMapper(User user, String feedText, Timestamp timestamp) {
     setUser(user);
     setFeedText(feedText);
