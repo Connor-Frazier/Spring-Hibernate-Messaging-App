@@ -31,7 +31,6 @@ public abstract class AbstractUserService implements UserService {
    * @param userDTO      dto object representing changes
    * @return updated user
    */
-
   User performUpdates(User toUpdateUser, UserDTO userDTO) {
     updatePassword(userDTO, toUpdateUser);
     updateFirstName(userDTO, toUpdateUser);
@@ -102,6 +101,11 @@ public abstract class AbstractUserService implements UserService {
     }
   }
 
+  /**
+   * Update the profile picture.
+   * @param userDTO      dto object representing changes
+   * @param originalUser user to be updated
+   */
   private void updateProfilePicture(UserDTO userDTO, User originalUser) {
     if (userDTO.getProfilePicturePath() != null) {
       originalUser.setProfilePicturePath(createFileForMediaTypeData(userDTO.getProfilePicturePath()));

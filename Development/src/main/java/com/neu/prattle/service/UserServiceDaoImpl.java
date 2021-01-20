@@ -27,8 +27,7 @@ import static com.neu.prattle.utils.FileHandler.createFileForMediaTypeData;
 import static com.neu.prattle.utils.FileHandler.getOriginalMediaTypeData;
 
 /**
- * Implements the {@link com.neu.prattle.service.UserService} interface to persist user objects to a
- * database.
+ * Implements the {@link UserService} interface.
  */
 @Service
 public class UserServiceDaoImpl extends AbstractUserService {

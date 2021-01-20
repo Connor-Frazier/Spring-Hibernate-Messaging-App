@@ -33,8 +33,7 @@ import static com.neu.prattle.utils.FileHandler.createFileForMediaTypeData;
 import static com.neu.prattle.utils.FileHandler.getOriginalMediaTypeData;
 
 /**
- * Implements the {@link com.neu.prattle.service.MessageService} interface to persist message
- * objects to a database.
+ * Implements the {@link MessageService} interface.
  */
 @Service
 public class MessageServiceDaoImpl implements MessageService {
@@ -82,10 +81,6 @@ public class MessageServiceDaoImpl implements MessageService {
     return message;
   }
 
-  private Message saveMessageToRepository(Message message) {
-    return messageRepository.saveAndFlush(message);
-  }
-
   @Override
   public Message updateMessage(MessageDTO messageDTO, int messageId) {
     Message message = findMessageById(messageId);
@@ -120,32 +115,6 @@ public class MessageServiceDaoImpl implements MessageService {
       allMessages.removeAll(expiredMessages);
     }
     return restoreAttachmentDataForManyMessages(filterMessages(allMessages, currUser.get()));
-  }
-
-  private List<Message> filterMessages(List<Message> allMessages, User user) {
-    List<Message> result = new ArrayList<>();
-    for (Message message : allMessages) {
-      boolean containsKeyword = false;
-      for (Filter filter : user.getFilters()) {
-        if (message.getContent().toLowerCase().contains(filter.getFilterString().toLowerCase())) {
-          containsKeyword = true;
-          break;
-        }
-      }
-      if (!containsKeyword) {
-        result.add(message);
-      }
-    }
-    return restoreAttachmentDataForManyMessages(result);
-  }
-
-  private List<Message> findExpiredMessages(List<Message> allMessages) {
-    Calendar cal = Calendar.getInstance();
-    cal.setTime(new Date());
-    cal.add(Calendar.DATE, -1);
-    return restoreAttachmentDataForManyMessages(allMessages.stream().filter(x -> x.getIsSelfDestructMessage()
-            && x.getGeneratedTime().before(new Timestamp(cal.getTime().getTime())))
-            .collect(Collectors.toList()));
   }
 
   @Override
@@ -244,6 +213,52 @@ public class MessageServiceDaoImpl implements MessageService {
   }
 
   /**
+   * Helper method to save a message to the database using the message repository.
+   * @param message the message to be saved.
+   * @return the message object that was saved in the database.
+   */
+  private Message saveMessageToRepository(Message message) {
+    return messageRepository.saveAndFlush(message);
+  }
+
+  /**
+   * Helper method to filter a list of messages based on if they match a filter or not.
+   * @param allMessages the list of messages to filter.
+   * @param user the user to filter the messages for.
+   * @return the messages whose content did not match a filter.
+   */
+  private List<Message> filterMessages(List<Message> allMessages, User user) {
+    List<Message> result = new ArrayList<>();
+    for (Message message : allMessages) {
+      boolean containsKeyword = false;
+      for (Filter filter : user.getFilters()) {
+        if (message.getContent().toLowerCase().contains(filter.getFilterString().toLowerCase())) {
+          containsKeyword = true;
+          break;
+        }
+      }
+      if (!containsKeyword) {
+        result.add(message);
+      }
+    }
+    return restoreAttachmentDataForManyMessages(result);
+  }
+
+  /**
+   * Helper method to find the messages with expired status from a list of messages.
+   * @param allMessages the list of messages to filter.
+   * @return the messages that have not expired.
+   */
+  private List<Message> findExpiredMessages(List<Message> allMessages) {
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(new Date());
+    cal.add(Calendar.DATE, -1);
+    return restoreAttachmentDataForManyMessages(allMessages.stream().filter(x -> x.getIsSelfDestructMessage()
+            && x.getGeneratedTime().before(new Timestamp(cal.getTime().getTime())))
+            .collect(Collectors.toList()));
+  }
+
+  /**
    * Return id of the user if exists.
    *
    * @param username username of the user
@@ -258,6 +273,10 @@ public class MessageServiceDaoImpl implements MessageService {
     return user.get().getUserID();
   }
 
+  /**
+   * Helper method to store an attachment if a message has one.
+   * @param message the message to store an attachment for.
+   */
   private void storeAttachmentFilesIfNeeded(Message message) {
     if (message.hasAttachment()) {
       for (MessageAttachment attachment : message.getAttachments()) {
@@ -266,6 +285,11 @@ public class MessageServiceDaoImpl implements MessageService {
     }
   }
 
+  /**
+   * Helper method to restore the actual attachment media files to many messages that were retrieved from the database.
+   * @param list the list of the message to restore the attachments for.
+   * @return the same list of messages with the attachment files restored.
+   */
   private List<Message> restoreAttachmentDataForManyMessages(List<Message> list) {
     for (Message message : list) {
       restoreOriginalAttachmentDataIfNeeded(message);
@@ -273,6 +297,11 @@ public class MessageServiceDaoImpl implements MessageService {
     return list;
   }
 
+  /**
+   * Helper method to restore the actual attachment media file for a message that was retrieved from the database.
+   * @param message the message to restore the attachment for if needed.
+   * @return the resulting message with the media file attached.
+   */
   private Message restoreOriginalAttachmentDataIfNeeded(Message message) {
     if (message.hasAttachment()) {
       for (MessageAttachment attachment : message.getAttachments()) {

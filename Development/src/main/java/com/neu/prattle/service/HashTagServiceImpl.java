@@ -13,6 +13,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implements the {@link HashTagService} interface.
+ */
 @Service
 @ComponentScan("com.neu.prattle")
 public class HashTagServiceImpl implements HashTagService {

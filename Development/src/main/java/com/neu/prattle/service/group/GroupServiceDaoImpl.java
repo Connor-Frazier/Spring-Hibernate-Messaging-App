@@ -27,6 +27,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+/**
+ * Implements the {@link GroupService} interface.
+ */
 @Service
 @ComponentScan("com.neu.prattle")
 @Transactional

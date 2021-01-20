@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Service class associated with {@link com.neu.prattle.controller.GroupController}.
+ * Acts as an interface between the data layer and the servlet controller level.
+ *
+ * The controller is responsible for interfacing with this instance
+ * to perform all the CRUD operations on group objects.
  */
 @Service
 public interface GroupService {
@@ -43,10 +46,26 @@ public interface GroupService {
   List<User> getMemberTypeByGroupName(String groupName, boolean isMember, boolean isModerator,
                                       boolean isFollower);
 
+  /**
+   * Get a list if users that are in a group and the users in all of the subgroups of the original group.
+   * @param groupName the group name.
+   * @return the associated users.
+   */
   List<User> getAllUsersInGroupsAndSubGroups(String groupName);
 
+  /**
+   * Add a subgroup to a parent group.
+   * @param parentGroup the parent group to add the subgroup to.
+   * @param subGroup the subgroup.
+   * @return the new parent group with the subgroup added.
+   */
   Group addSubGroup(Group parentGroup, Group subGroup);
 
+  /**
+   * Get the subgroups for a group.
+   * @param group the group to get the subgroups for.
+   * @return the associated subgroups.
+   */
   List<Group> getSubgroups(Group group);
 
   /**
@@ -57,7 +76,6 @@ public interface GroupService {
    * @return true if member, else false
    */
   boolean isMember(Group group, User user);
-
 
   /**
    * Checks if user is moderator.
@@ -129,6 +147,11 @@ public interface GroupService {
    */
   void updateGroup(GroupDTO group, String groupName);
 
+  /**
+   * Get the parent groups for a subgroup.
+   * @param group the group to find parent groups for.
+   * @return the associated parent groups.
+   */
   List<Group> getParentGroups(Group group);
 
   /**

@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /***
- * Acts as an interface between the data layer and the
- * servlet controller.
+ * Acts as an interface between the data layer and servlet controller level.
  *
  * The controller is responsible for interfacing with this instance
  * to perform all the CRUD operations on message objects.

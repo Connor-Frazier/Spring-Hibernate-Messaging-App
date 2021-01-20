@@ -17,6 +17,9 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Implements the {@link FilterService} interface.
+ */
 @Service
 @Transactional
 public class FilterServiceImpl implements FilterService {

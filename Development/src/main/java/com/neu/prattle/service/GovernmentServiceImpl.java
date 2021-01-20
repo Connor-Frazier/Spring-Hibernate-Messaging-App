@@ -18,6 +18,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Implements the {@link GovernmentService} interface.
+ */
 @Service
 @Transactional
 public class GovernmentServiceImpl implements GovernmentService {

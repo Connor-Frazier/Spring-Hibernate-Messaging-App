@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 /***
- * Acts as an interface between the data layer and the
- * servlet controller.
+ * Acts as an interface between the data layer and servlet controller level.
  *
  * The controller is responsible for interfacing with this instance
  * to perform all the CRUD operations on user accounts.
