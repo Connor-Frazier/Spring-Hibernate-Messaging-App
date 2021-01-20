@@ -70,9 +70,9 @@ public interface MessageService {
   /**
    * Returns the count of new messages between users.
    *
-   * @param firstPersonUsername  receiver of messages
-   * @param secondPersonUsername sender of messages
-   * @return number of new messages
+   * @param firstPersonUsername  receiver of messages.
+   * @param secondPersonUsername sender of messages.
+   * @return number of new messages.
    */
   int getNewMessageCount(String firstPersonUsername, String secondPersonUsername)
           throws UserDoesNotExistException;
@@ -87,11 +87,11 @@ public interface MessageService {
   List<Message> getUnsentMessages(String userName, boolean excludeExpired) throws UserDoesNotExistException;
 
   /**
-   * Returns a list of messages based on hashtag.
+   * Returns a list of messages to and from a user based on hashtag.
    *
-   * @param hashtag  hashtag associated with the expected messages
-   * @param username
-   * @return list of messages matching the search criteria
+   * @param hashtag hashtag associated with the expected messages
+   * @param username the username of the user whose messages will be returned.
+   * @return list of messages matching the search criteria.
    */
   List<Message> findMessagesByHashtag(String hashtag, String username, boolean excludeExpired);
 
@@ -105,8 +105,8 @@ public interface MessageService {
   /**
    * Return all messages part of the same thread.
    *
-   * @param sourceMessageID ID of the source message from which the thread was created
-   * @return list of messages
+   * @param sourceMessageID ID of the source message from which the thread was created.
+   * @return list of messages.
    */
   List<Message> getMessagesForThread(int sourceMessageID);
 }

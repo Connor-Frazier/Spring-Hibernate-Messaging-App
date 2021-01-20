@@ -21,6 +21,9 @@ import java.util.List;
 
 import javax.ws.rs.core.Response;
 
+/**
+ * A REST controller for handling CRUD operations on Filter objects.
+ */
 @RestController
 @RequestMapping(path = "/rest/filter")
 @CrossOrigin(origins = {"http://com.northeastern.cs5500.team1.s3-website.us-east-2.amazonaws.com",
@@ -41,6 +44,13 @@ public class FilterController {
     this.userService = userService;
   }
 
+  /**
+   * Handles a HTTP PUT request add a filter for a username.
+   *
+   * @param filterText the content to filter to add.
+   * @param username the username of the user to add the filer for.
+   * @return A Response indicating the outcome of the requested operation.
+   */
   @PutMapping(value = "/add/{filterText}/{username}")
   public Response addFilter(@PathVariable String filterText, @PathVariable String username) {
     try {
@@ -53,6 +63,13 @@ public class FilterController {
     return Response.ok().build();
   }
 
+  /**
+   * Handles a HTTP DELETE request for removing a filter for a user.
+   *
+   * @param filterText the content of the filter to remove.
+   * @param username the username of the usr to remove the filter for.
+   * @return A Response indicating the outcome of the requested operation.
+   */
   @DeleteMapping(value = "/remove/{filterText}/{username}")
   public Response removeFilter(@PathVariable String filterText, @PathVariable String username) {
     try {
@@ -65,6 +82,12 @@ public class FilterController {
     return Response.ok().build();
   }
 
+  /**
+   * Handles a HTTP GET request for getting all the filters for a username.
+   *
+   * @param username the username of the user to get the filters for.
+   * @return A Response indicating the outcome of the requested operation.
+   */
   @GetMapping(value = "/get/{username}")
   public List<Filter> getFiltersByUsername(@PathVariable String username) {
     return filterService.getFiltersForUser(userService.findUserByName(username).orElse(null));
