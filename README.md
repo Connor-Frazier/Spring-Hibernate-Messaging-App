@@ -8,12 +8,4 @@ As a group we were tasked with creating messaging app backend application that w
 
 ### My Responsibilites:
 
-I had three main responsibilities for this project. 
-
-The first was the messages creation and management from the model layer to the endpoint level. This included contributing to the messages databse table design, writing the message object model and related models, the data layer to access the database, the service layer to control the manipulation of messages and their data, creating ways for the websocket controller to interact with the messages infrasturcture, and finally writing endpoints that client side apps would need for access to message related data.
-
-The second was contributing to the handling of the messages and user connections through the websocket(used for delivering messages in real time) on both the server side and client side applications. This included adding previous domain knowledge, and contributing to the implementing of websocket features like user session management and message delivery/recieving.
-
-Lastly I was responsible for the creation/management of the cloud infrastucutre for our project. One of the last requirements for the project was to run the app live in the cloud. For this I chose to use AWS applications including S3 buckets, EC2 instances, ELastic Beanstalk, and RDS.
-
-
+I had three main responsibilities for this project. The first was the messages creation and management from the model layer to the endpoint level. This included contributing to the messages databse table design, writing the message object model and related models, the data layer to access the database, the service layer to control the manipulation of messages and their data, creating ways for the websocket controller to interact with the messages infrasturcture, and finally writing endpoints that client side apps would need for access to message related data. The second was contributing to the handling of the messages and user connections through the websocket(used for delivering messages in real time) on both the server side and client side applications. This included adding previous domain knowledge, and contributing to the implementing of websocket features like user session management and message delivery/recieving. Lastly I was responsible for the creation/management of the cloud infrastucutre for our project. One of the last requirements for the project was to run the app live in the cloud. For this I chose to use AWS applications including S3 buckets, EC2 instances, ELastic Beanstalk, and RDS.
